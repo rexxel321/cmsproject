@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Diskominfotik - Admin CMS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-container {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .sidebar h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .news-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(10px);
+        }
+
+        .news-item:hover::before {
+            left: 100%;
+        }
+
+        .news-thumbnail {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .news-content h4 {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .content-area {
+            flex: 1;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .editor-panel {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .tools-panel {
+            width: 250px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .tools-panel h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .tool-category {
+            margin-bottom: 2rem;
+        }
+
+        .tool-category h4 {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-item {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .tool-item:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tool-item:hover {
+            transform: scale(1.1) rotateZ(5deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn-primary:hover::before {
+            width: 300%;
+            height: 300%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .video-preview {
+            width: 100%;
+            height: 300px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-save {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-save:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transform: translateX(400px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-circle">PD</div>
+                <div class="logo-text">Portal Diskominfotik</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item">Beranda</a>
+                <a href="#" class="nav-item">Berita</a>
+                <a href="#" class="nav-item">Editor Admin</a>
+                <a href="#" class="nav-item">Login Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>📰 Rekomendasi Berita</h3>
+            <div class="news-item" onclick="selectNews('Penyusunan Anggaran Teknologi Informasi Daerah')">
+                <div class="news-thumbnail">📊</div>
+                <div class="news-content">
+                    <h4>Penyusunan Anggaran Teknologi Informasi Daerah</h4>
+                    <div class="news-date">15 Juli 2025</div>
+                </div>
+            </div>
+            <div class="news-item" onclick="selectNews('Kerjasama Kementerian Komunikasi dan Informatika')">
+                <div class="news-thumbnail">🤝</div>
+                <div class="news-content">
+                    <h4>Kerjasama Kementerian Komunikasi dan Informatika</h4>
+                    <div class="news-date">14 Juli 2025</div>
+                </div>
+            </div>
+            <div class="news-item" onclick="selectNews('Launching Aplikasi Mobile Dinas Komunikasi')">
+                <div class="news-thumbnail">📱</div>
+                <div class="news-content">
+                    <h4>Launching Aplikasi Mobile Dinas Komunikasi</h4>
+                    <div class="news-date">13 Juli 2025</div>
+                </div>
+            </div>
+            <div class="news-item" onclick="selectNews('Sosialisasi Digital Transformation')">
+                <div class="news-thumbnail">💻</div>
+                <div class="news-content">
+                    <h4>Sosialisasi Digital Transformation</h4>
+                    <div class="news-date">12 Juli 2025</div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="content-area">
+            <main class="editor-panel">
+                <div class="video-preview">
+                    <div class="play-button" onclick="playVideo()">▶</div>
+                </div>
+
+                <form id="newsForm">
+                    <div class="form-group">
+                        <label for="title">Judul Berita</label>
+                        <input type="text" id="title" name="title" placeholder="Masukkan judul berita...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Deskripsi</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Masukkan deskripsi berita..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Tanggal dan Tempat</label>
+                        <input type="text" id="date" name="date" placeholder="Masukkan tanggal dan tempat...">
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="button" class="btn-primary" onclick="updateContent()">Ganti Isi Berita</button>
+                        <button type="button" class="btn-secondary" onclick="saveContent()">Simpan</button>
+                    </div>
+                </form>
+            </main>
+
+            <aside class="tools-panel">
+                <h3>🛠️ Tools</h3>
+                
+                <div class="tool-category">
+                    <h4>Text</h4>
+                    <div class="tool-grid">
+                        <div class="tool-item" onclick="applyTool('bold')" title="Bold">B</div>
+                        <div class="tool-item" onclick="applyTool('italic')" title="Italic">I</div>
+                        <div class="tool-item" onclick="applyTool('underline')" title="Underline">U</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4>Media</h4>
+                    <div class="tool-grid">
+                        <div class="tool-item" onclick="applyTool('image')" title="Insert Image">🖼️</div>
+                        <div class="tool-item" onclick="applyTool('video')" title="Insert Video">📹</div>
+                        <div class="tool-item" onclick="applyTool('audio')" title="Insert Audio">🎵</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4>Layout</h4>
+                    <div class="tool-grid">
+                        <div class="tool-item" onclick="applyTool('align-left')" title="Align Left">⬅️</div>
+                        <div class="tool-item" onclick="applyTool('align-center')" title="Align Center">⬆️</div>
+                        <div class="tool-item" onclick="applyTool('align-right')" title="Align Right">➡️</div>
+                        <div class="tool-item" onclick="applyTool('list')" title="List">📝</div>
+                        <div class="tool-item" onclick="applyTool('table')" title="Table">📊</div>
+                        <div class="tool-item" onclick="applyTool('link')" title="Link">🔗</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4>Style</h4>
+                    <div class="tool-grid">
+                        <div class="tool-item" onclick="applyTool('font-size')" title="Font Size">📏</div>
+                        <div class="tool-item" onclick="applyTool('color')" title="Text Color">🎨</div>
+                        <div class="tool-item" onclick="applyTool('bg-color')" title="Background">🖌️</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div class="floating-save" onclick="quickSave()" title="Quick Save">💾</div>
+    <div class="notification" id="notification"></div>
+
+    <script>
+        function selectNews(title) {
+            document.getElementById('title').value = title;
+            showNotification('Berita dipilih: ' + title);
+        }
+
+        function applyTool(tool) {
+            const activeElement = document.activeElement;
+            if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
+                // Simulate applying tool to active text field
+                showNotification('Tool "' + tool + '" diterapkan');
+            } else {
+                showNotification('Pilih text field terlebih dahulu');
+            }
+        }
+
+        function updateContent() {
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const date = document.getElementById('date').value;
+
+            if (title && description) {
+                showNotification('Konten berhasil diperbarui!');
+            } else {
+                showNotification('Harap lengkapi semua field');
+            }
+        }
+
+        function saveContent() {
+            const title = document.getElementById('title').value;
+            if (title) {
+                showNotification('Konten berhasil disimpan!');
+            } else {
+                showNotification('Harap isi judul berita');
+            }
+        }
+
+        function quickSave() {
+            showNotification('Quick save berhasil!');
+        }
+
+        function playVideo() {
+            showNotification('Video player akan dimuat...');
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Auto-save functionality
+        let autoSaveInterval;
+        function startAutoSave() {
+            autoSaveInterval = setInterval(() => {
+                const title = document.getElementById('title').value;
+                if (title) {
+                    showNotification('Auto-save...');
+                }
+            }, 30000); // Auto-save every 30 seconds
+        }
+
+        // Add event listeners for dynamic interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            startAutoSave();
+            
+            // Add animation to form elements
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

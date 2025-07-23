@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita - Diskominfotik Kabupaten Bekasi</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-circle">KB</div>
+                <div>
+                    <div class="logo-text">Diskominfotik Kabupaten Bekasi</div>
+                    <div class="logo-subtitle">Dinas Komunikasi dan Informatika</div>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="beranda.html" class="nav-item">Beranda</a>
+                <a href="berita.html" class="nav-item">Berita</a>
+                <a href="editor_admin.html" class="nav-item">Editor Admin</a>
+                <a href="login_admin.html" class="nav-item">Login Admin</a>
+            </nav>
+        </div>
+        <div class="government-badge">🏛️ Resmi Pemerintah</div>
+    </header>
+
+    <div class="main-container">
+        <div class="news-main">
+            <img src="https://picsum.photos/800/400?random=1" alt="Berita Utama" class="news-image">
+            <div class="news-content">
+                <div class="news-title">Rapat Koordinasi Pembangunan Digital Kabupaten Bekasi</div>
+                <div class="news-date">📅 15 Juli 2025</div>
+                <div class="news-desc">
+                    Rapat koordinasi untuk mempercepat transformasi digital di wilayah Kabupaten Bekasi diadakan pada hari ini, 15 Juli 2025, di Gedung Diskominfotik. Acara ini dihadiri oleh berbagai pejabat pemerintah dan stake holder teknologi untuk membahas strategi pengembangan infrastruktur digital. Tujuan utamanya adalah meningkatkan layanan publik melalui teknologi canggih dan memastikan akses internet merata di seluruh desa.
+                    <br><br>
+                    Dalam rapat tersebut, disepakati beberapa langkah konkret, termasuk pembangunan pusat data baru dan pelatihan IT untuk ASN. Diskusi juga mencakup kerja sama dengan kementerian untuk mendukung inisiatif Smart City Bekasi 2025.
+                </div>
+            </div>
+        </div>
+        <aside class="sidebar">
+            <h3>Rekomendasi Berita</h3>
+            <div class="recommendation-item">
+                <a href="berita.html?article=launching-smart-city">Launching Smart City Bekasi 2025</a>
+            </div>
+            <div class="recommendation-item">
+                <a href="berita.html?article=sosialisasi-aplikasi">Sosialisasi Aplikasi Pelayanan Publik</a>
+            </div>
+            <div class="recommendation-item">
+                <a href="berita.html?article=pelatihan-it">Pelatihan IT untuk ASN Kabupaten Bekasi</a>
+            </div>
+            <div class="recommendation-item">
+                <a href="berita.html?article=pusat-data">Pembukaan Pusat Data Kabupaten Bekasi</a>
+            </div>
+        </aside>
+    </div>
+
+    <div class="popular-section">
+        <h2>Terpopuler Bulan Ini</h2>
+        <div class="popular-item">
+            <a href="berita.html?article=smart-city">Launching Smart City Bekasi 2025</a>
+        </div>
+        <div class="popular-item">
+            <a href="berita.html?article=pelatihan-it">Pelatihan IT untuk ASN Kabupaten Bekasi</a>
+        </div>
+        <div class="popular-item">
+            <a href="berita.html?article=pusat-data">Pembukaan Pusat Data Kabupaten Bekasi</a>
+        </div>
+    </div>
+
+    <script>
+        function editNews(title, description, date) {
+            localStorage.setItem('newsTitle', title);
+            localStorage.setItem('newsDescription', description);
+            localStorage.setItem('newsDate', date);
+            window.location.href = 'editor_admin.html';
+        }
+    </script>
+</body>
+</html>

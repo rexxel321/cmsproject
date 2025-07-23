@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Admin - Diskominfotik Kabupaten Bekasi</title>
+    <link rel="stylesheet" href="editor_admin.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-circle">KB</div>
+                <div>
+                    <div class="logo-text">Diskominfotik Kabupaten Bekasi</div>
+                    <div class="logo-subtitle">Dinas Komunikasi dan Informatika</div>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="beranda.html" class="nav-item">Beranda</a>
+                <a href="berita.html" class="nav-item">Berita</a>
+                <a href="editor_admin.html" class="nav-item">Editor Admin</a>
+                <a href="login_admin.html" class="nav-item">Login Admin</a>
+            </nav>
+        </div>
+        <div class="government-badge">🏛️ Resmi Pemerintah</div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>📰 Berita Terbaru Kabupaten Bekasi</h3>
+            <div class="status-bar">
+                <span>🟢</span>
+                <span>System Online - Server Aktif</span>
+            </div>
+            <div class="news-item" data-title="Rapat Koordinasi Pembangunan Digital Kabupaten Bekasi">
+                <div class="news-thumbnail">🏛️</div>
+                <div class="news-content">
+                    <h4>Rapat Koordinasi Pembangunan Digital Kabupaten Bekasi</h4>
+                    <div class="news-date">📅 15 Juli 2025</div>
+                </div>
+            </div>
+            <div class="news-item" data-title="Launching Smart City Bekasi 2025">
+                <div class="news-thumbnail">🏙️</div>
+                <div class="news-content">
+                    <h4>Launching Smart City Bekasi 2025</h4>
+                    <div class="news-date">📅 14 Juli 2025</div>
+                </div>
+            </div>
+            <div class="news-item" data-title="Sosialisasi Aplikasi Pelayanan Publik">
+                <div class="news-thumbnail">📱</div>
+                <div class="news-content">
+                    <h4>Sosialisasi Aplikasi Pelayanan Publik</h4>
+                    <div class="news-date">📅 13 Juli 2025</div>
+                </div>
+            </div>
+            <div class="news-item" data-title="Kerjasama Digitalisasi dengan Kementerian">
+                <div class="news-thumbnail">🤝</div>
+                <div class="news-content">
+                    <h4>Kerjasama Digitalisasi dengan Kementerian</h4>
+                    <div class="news-date">📅 12 Juli 2025</div>
+                </div>
+            </div>
+            <div class="news-item" data-title="Pelatihan IT untuk ASN Kabupaten Bekasi">
+                <div class="news-thumbnail">💻</div>
+                <div class="news-content">
+                    <h4>Pelatihan IT untuk ASN Kabupaten Bekasi</h4>
+                    <div class="news-date">📅 11 Juli 2025</div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="content-area">
+            <main class="editor-panel">
+                <div class="bekasi-header">
+                    <h1>🏛️ CMS Admin Portal Berita</h1>
+                    <p>Sistem Manajemen Konten - Diskominfotik Kabupaten Bekasi</p>
+                </div>
+
+                <div class="video-preview">
+                    <div class="play-button">▶</div>
+                </div>
+
+                <form id="newsForm">
+                    <div class="form-group">
+                        <label for="title">📝 Judul Berita</label>
+                        <input type="text" id="title" name="title" placeholder="Masukkan judul berita resmi...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">📄 Deskripsi Berita</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Masukkan deskripsi lengkap berita..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">📅 Tanggal dan Tempat</label>
+                        <input type="text" id="date" name="date" placeholder="Contoh: Bekasi, 15 Juli 2025">
+                    </div>
+
+                    <div class="status-bar">
+                        <span>ℹ️</span>
+                        <span>Semua konten akan ditinjau sebelum dipublikasikan</span>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="button" class="btn-primary" data-action="update">📝 Ganti Isi Berita</button>
+                        <button type="button" class="btn-secondary" data-action="save">💾 Simpan Draft</button>
+                    </div>
+                </form>
+            </main>
+
+            <aside class="tools-panel">
+                <h3>🛠️ Tools Editor</h3>
+                
+                <div class="tool-category">
+                    <h4>📝 Format Teks</h4>
+                    <div class="tool-grid">
+                        <div class="tool-item" data-tool="bold" title="Tebal">B</div>
+                        <div class="tool-item" data-tool="italic" title="Miring">I</div>
+                        <div class="tool-item" data-tool="underline" title="Garis Bawah">U</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4>📸 Media</h4>
+                    <div class="tool-grid">
+                        <div class="tool-item" data-tool="image" title="Sisipkan Gambar">🖼️</div>
+                        <div class="tool-item" data-tool="video" title="Sisipkan Video">📹</div>
+                        <div class="tool-item" data-tool="document" title="Sisipkan Dokumen">📄</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4>📐 Tata Letak</h4>
+                    <div class="tool-grid">
+                        <div class="tool-item" data-tool="align-left" title="Rata Kiri">⬅️</div>
+                        <div class="tool-item" data-tool="align-center" title="Rata Tengah">⬆️</div>
+                        <div class="tool-item" data-tool="align-right" title="Rata Kanan">➡️</div>
+                        <div class="tool-item" data-tool="list" title="Daftar">📝</div>
+                        <div class="tool-item" data-tool="table" title="Tabel">📊</div>
+                        <div class="tool-item" data-tool="link" title="Tautan">🔗</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4>🎨 Gaya</h4>
+                    <div class="tool-grid">
+                        <div class="tool-item" data-tool="font-size" title="Ukuran Font">📏</div>
+                        <div class="tool-item" data-tool="color" title="Warna Teks">🎨</div>
+                        <div class="tool-item" data-tool="highlight" title="Sorot">✨</div>
+                    </div>
+                </div>
+
+                <div class="status-bar">
+                    <span>👤</span>
+                    <span>Admin: Diskominfotik Bekasi</span>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div class="floating-save" data-action="quickSave" title="Simpan Cepat">💾</div>
+    <div class="notification" id="notification"></div>
+
+    <script src="editor_admin.js"></script>
+</body>
+</html>

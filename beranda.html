@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Diskominfotik Kabupaten Bekasi</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-circle">KB</div>
+                <div>
+                    <div class="logo-text">Diskominfotik Kabupaten Bekasi</div>
+                    <div class="logo-subtitle">Dinas Komunikasi dan Informatika</div>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="beranda.html" class="nav-item">Beranda</a>
+                <a href="berita.html" class="nav-item">Berita</a>
+                <a href="editor_admin.html" class="nav-item">Editor Admin</a>
+                <a href="login_admin.html" class="nav-item">Login Admin</a>
+            </nav>
+        </div>
+        <div class="government-badge">🏛️ Resmi Pemerintah</div>
+    </header>
+
+    <div class="main-container">
+        <div class="bekasi-header">
+            <h1>🏡 Beranda Diskominfotik Kabupaten Bekasi</h1>
+            <p>Selamat datang di portal resmi berita dan informasi</p>
+        </div>
+
+        <div class="news-grid">
+            <div class="news-card" onclick="editNews('Rapat Koordinasi Pembangunan Digital Kabupaten Bekasi', 'Rapat koordinasi untuk mempercepat transformasi digital di wilayah Kabupaten Bekasi.', 'Bekasi, 15 Juli 2025')">
+                <img src="https://picsum.photos/300/180?random=1" alt="Rapat Koordinasi" class="news-image">
+                <div class="news-title">Rapat Koordinasi Pembangunan Digital Kabupaten Bekasi</div>
+                <div class="news-date">📅 15 Juli 2025</div>
+                <div class="news-desc">Rapat koordinasi untuk mempercepat transformasi digital di wilayah Kabupaten Bekasi.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Launching Smart City Bekasi 2025', 'Pengenalan inisiatif Smart City untuk meningkatkan kualitas hidup masyarakat Bekasi.', 'Bekasi, 14 Juli 2025')">
+                <img src="https://picsum.photos/300/180?random=2" alt="Smart City Launch" class="news-image">
+                <div class="news-title">Launching Smart City Bekasi 2025</div>
+                <div class="news-date">📅 14 Juli 2025</div>
+                <div class="news-desc">Pengenalan inisiatif Smart City untuk meningkatkan kualitas hidup masyarakat Bekasi.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Sosialisasi Aplikasi Pelayanan Publik', 'Sosialisasi penggunaan aplikasi terbaru untuk layanan publik di Kabupaten Bekasi.', 'Bekasi, 13 Juli 2025')">
+                <img src="https://picsum.photos/300/180?random=3" alt="Sosialisasi Aplikasi" class="news-image">
+                <div class="news-title">Sosialisasi Aplikasi Pelayanan Publik</div>
+                <div class="news-date">📅 13 Juli 2025</div>
+                <div class="news-desc">Sosialisasi penggunaan aplikasi terbaru untuk layanan publik di Kabupaten Bekasi.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Kerjasama Digitalisasi dengan Kementerian', 'Kerjasama strategis untuk mendukung digitalisasi layanan pemerintahan.', 'Bekasi, 12 Juli 2025')">
+                <img src="https://picsum.photos/300/180?random=4" alt="Kerjasama Digitalisasi" class="news-image">
+                <div class="news-title">Kerjasama Digitalisasi dengan Kementerian</div>
+                <div class="news-date">📅 12 Juli 2025</div>
+                <div class="news-desc">Kerjasama strategis untuk mendukung digitalisasi layanan pemerintahan.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Pelatihan IT untuk ASN Kabupaten Bekasi', 'Pelatihan IT untuk meningkatkan keterampilan ASN di Kabupaten Bekasi.', 'Bekasi, 10 Juli 2025')">
+                <img src="https://picsum.photos/300/180?random=5" alt="Pelatihan IT" class="news-image">
+                <div class="news-title">Pelatihan IT untuk ASN Kabupaten Bekasi</div>
+                <div class="news-date">📅 10 Juli 2025</div>
+                <div class="news-desc">Pelatihan IT untuk meningkatkan keterampilan ASN di Kabupaten Bekasi.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Pembukaan Pusat Data Kabupaten Bekasi', 'Resmi dibukanya pusat data untuk mendukung layanan digital.', 'Bekasi, 09 Juli 2025')">
+                <img src="https://picsum.photos/300/180?random=6" alt="Pusat Data" class="news-image">
+                <div class="news-title">Pembukaan Pusat Data Kabupaten Bekasi</div>
+                <div class="news-date">📅 09 Juli 2025</div>
+                <div class="news-desc">Resmi dibukanya pusat data untuk mendukung layanan digital.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Seminar Teknologi Hijau', 'Seminar tentang pemanfaatan teknologi ramah lingkungan di Bekasi.', 'Bekasi, 08 Juli 2025')">
+                <img src="https://picsum.photos/300/180?random=7" alt="Seminar Teknologi Hijau" class="news-image">
+                <div class="news-title">Seminar Teknologi Hijau</div>
+                <div class="news-date">📅 08 Juli 2025</div>
+                <div class="news-desc">Seminar tentang pemanfaatan teknologi ramah lingkungan di Bekasi.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Peningkatan Jaringan Internet Desa', 'Program untuk meningkatkan akses internet di desa-desa Bekasi.', 'Bekasi, 07 Juli 2025')">
+                <img src="https://picsum.photos/300/180?random=8" alt="Internet Desa" class="news-image">
+                <div class="news-title">Peningkatan Jaringan Internet Desa</div>
+                <div class="news-date">📅 07 Juli 2025</div>
+                <div class="news-desc">Program untuk meningkatkan akses internet di desa-desa Bekasi.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Peringatan Hari Teknologi Nasional', 'Upacara peringatan Hari Teknologi Nasional 2025 di Kabupaten Bekasi.', 'Bekasi, 15 Juli 2025 10:00 WIB')">
+                <img src="https://picsum.photos/300/180?random=9" alt="Hari Teknologi Nasional" class="news-image">
+                <div class="news-title">Peringatan Hari Teknologi Nasional</div>
+                <div class="news-date">📅 15 Juli 2025</div>
+                <div class="news-desc">Upacara peringatan Hari Teknologi Nasional 2025 di Kabupaten Bekasi.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Peluncuran Layanan e-Government', 'Peluncuran layanan e-Government terbaru untuk masyarakat Bekasi.', 'Bekasi, 14 Juli 2025 14:00 WIB')">
+                <img src="https://picsum.photos/300/180?random=10" alt="e-Government Launch" class="news-image">
+                <div class="news-title">Peluncuran Layanan e-Government</div>
+                <div class="news-date">📅 14 Juli 2025</div>
+                <div class="news-desc">Peluncuran layanan e-Government terbaru untuk masyarakat Bekasi.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Workshop Digital Marketing', 'Workshop digital marketing untuk UMKM di Kabupaten Bekasi.', 'Bekasi, 13 Juli 2025 09:00 WIB')">
+                <img src="https://picsum.photos/300/180?random=11" alt="Workshop Digital Marketing" class="news-image">
+                <div class="news-title">Workshop Digital Marketing</div>
+                <div class="news-date">📅 13 Juli 2025</div>
+                <div class="news-desc">Workshop digital marketing untuk UMKM di Kabupaten Bekasi.</div>
+            </div>
+            <div class="news-card" onclick="editNews('Pembersihan Data Server', 'Aktivitas rutin pembersihan data server untuk optimalisasi.', 'Bekasi, 12 Juli 2025 08:00 WIB')">
+                <img src="https://picsum.photos/300/180?random=12" alt="Pembersihan Server" class="news-image">
+                <div class="news-title">Pembersihan Data Server</div>
+                <div class="news-date">📅 12 Juli 2025</div>
+                <div class="news-desc">Aktivitas rutin pembersihan data server untuk optimalisasi.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function editNews(title, description, date) {
+            localStorage.setItem('newsTitle', title);
+            localStorage.setItem('newsDescription', description);
+            localStorage.setItem('newsDate', date);
+            window.location.href = 'editor_admin.html';
+        }
+    </script>
+</body>
+</html>
