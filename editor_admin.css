@@ -569,3 +569,17 @@ body {
     font-weight: bold;
     animation: slideInRight 1s ease-out;
 }
+
+#title-editor .ql-container {
+    border-radius: 8px;
+    border: 2px solid #e1e5e9;
+    background: rgba(255, 255, 255, 0.95);
+}
+#title-editor .ql-container:focus-within {
+    border-color: #FFD700;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+#title-editor .ql-editor {
+    padding: 1rem;
+    font-size: 1rem;
+}
